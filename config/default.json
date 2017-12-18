@@ -1,0 +1,12 @@
+{
+  "port": 3000,
+  "url": "localhost:3000",
+  "database": {
+    "host": "127.0.0.1",
+    "database":"docutt",
+    "username": "root",
+    "password": "",
+    "dialect": "mysql",
+    "logging": false
+  }
+}
