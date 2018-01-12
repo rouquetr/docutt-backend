@@ -5,8 +5,9 @@
     "host": "127.0.0.1",
     "database":"docutt",
     "username": "root",
-    "password": "",
+    "password": "root",
     "dialect": "mysql",
-    "logging": false
+    "logging": false,
+    "port": 8889
   }
 }
