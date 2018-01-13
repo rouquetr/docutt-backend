@@ -2,7 +2,7 @@
 
 module.exports = (sequelize, DataTypes) => {
     var Candidature = sequelize.define('Candidature', {
-        statut: DataTypes.INTEGER
+        statut: { type: DataTypes.INTEGER, allowNull: false }
     }, {
         timestamps: false,
         freezeTableName: true,
@@ -11,11 +11,16 @@ module.exports = (sequelize, DataTypes) => {
 
     Candidature.associate = function(models) {
         models.Candidature.belongsTo(models.Utilisateur, {
-            foreignKey: "id_doctorant"
+            foreignKey: {
+                name: "id_doctorant",
+                allowNull: false
             }
-        )
+        })
         models.Candidature.belongsTo(models.Creneau, {
-            foreignKey: "id_creneau"
+            foreignKey: {
+                name: "id_creneau",
+                allowNull: false
+            }
         })
     }
 

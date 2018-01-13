@@ -2,7 +2,7 @@
 
 module.exports = (sequelize, DataTypes) => {
     var Ue = sequelize.define('Ue', {
-        nom: DataTypes.STRING
+        nom: { type: DataTypes.STRING, allowNull: false }
     }, {
         timestamps: false,
         freezeTableName: true,

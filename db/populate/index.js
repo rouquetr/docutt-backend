@@ -1,8 +1,15 @@
 const models = require('../models')
+
 const populateUtilisateurs = require('./populateUtilisateurs')
+const populateUe = require('./populateUe')
+const populateCreneau = require('./populateCreneau')
+const populateCandidature = require('./populateCandidature')
 
 models.sequelize.sync({force: true})
     .then(() => console.log("Population en cours..."))
     .then(() => populateUtilisateurs())
+    .then(() => populateUe())
+    .then(() => populateCreneau())
+    .then(() => populateCandidature())
     .then(() => console.log("Population terminée."))
     .then(() => process.exit(0))

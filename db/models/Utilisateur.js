@@ -2,10 +2,10 @@
 
 module.exports = (sequelize, DataTypes) => {
     var Utilisateur = sequelize.define('Utilisateur', {
-        nom: DataTypes.STRING,
-        prenom: DataTypes.STRING,
-        email: DataTypes.STRING,
-        role: DataTypes.INTEGER
+        nom: { type: DataTypes.STRING, allowNull: false },
+        prenom: { type: DataTypes.STRING, allowNull: false },
+        email: { type: DataTypes.STRING, allowNull: false },
+        role: { type: DataTypes.INTEGER, allowNull: false }
     }, {
         timestamps: false,
         freezeTableName: true,

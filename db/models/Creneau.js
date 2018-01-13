@@ -2,9 +2,9 @@
 
 module.exports = (sequelize, DataTypes) => {
     var Creneau = sequelize.define('Creneau', {
-        date: DataTypes.DATE,
-        heure_debut: DataTypes.STRING,
-        duree: DataTypes.INTEGER
+        date: { type: DataTypes.DATE, allowNull: false },
+        heure_debut: { type: DataTypes.STRING, allowNull: false },
+        duree: { type: DataTypes.INTEGER, allowNull: false }
     }, {
         timestamps: false,
         freezeTableName: true,
@@ -13,7 +13,10 @@ module.exports = (sequelize, DataTypes) => {
 
     Creneau.associate = function(models) {
         models.Creneau.belongsTo(models.Ue, {
-            foreignKey: "id_ue"
+            foreignKey: {
+                name: "id_ue",
+                allowNull: false
+            }
         })
     }
 
