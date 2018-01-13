@@ -7,7 +7,7 @@
     "username": "docutt",
     "password": "docutt-backend",
     "dialect": "mysql",
-    "logging": true,
+    "logging": false,
     "pool": {
       "maxConnections": 5,
       "maxIdleTime": 30
