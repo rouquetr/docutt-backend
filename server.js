@@ -2,6 +2,7 @@ const config = require('config')
 const models = require('./db/models')
 
 const {initialize} = require('./utils/authentication')
+initialize()
 
 const app = require('./app')
 

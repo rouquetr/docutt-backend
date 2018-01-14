@@ -2,6 +2,7 @@ const bodyParser = require('body-parser')
 
 const indexRoute = require('./index-route')
 const utilisateurRoute = require('./utilisateur-routes')
+const ueRoute = require('./ue-routes')
 
 module.exports = function createRoutes(app) {
     app.use(bodyParser.json())
@@ -9,4 +10,5 @@ module.exports = function createRoutes(app) {
 
     app.use('/', indexRoute)
     app.use('/utilisateurs', utilisateurRoute)
+    app.use('/ue', ueRoute)
 }
