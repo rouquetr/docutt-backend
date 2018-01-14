@@ -2,7 +2,7 @@
 
 module.exports = (sequelize, DataTypes) => {
     var Candidature = sequelize.define('Candidature', {
-        statut: { type: DataTypes.INTEGER, allowNull: false }
+        statut: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 }
     }, {
         timestamps: false,
         freezeTableName: true,
