@@ -9,6 +9,7 @@
 
 module.exports = (sequelize, DataTypes) => {
     var Utilisateur = sequelize.define('Utilisateur', {
+        id: { type: DataTypes.STRING, primaryKey: true},
         nom: { type: DataTypes.STRING, allowNull: false },
         prenom: { type: DataTypes.STRING, allowNull: false },
         email: { type: DataTypes.STRING, allowNull: false },

@@ -1,13 +1,28 @@
 {
   "port": 3000,
   "url": "docutt-backend.eu-west-1.elasticbeanstalk.com",
+  "firebase": {
+    "credential": {
+      "type": "service_account",
+      "project_id": "doc-utt",
+      "private_key_id": "a3d78d452dac1bcadb33df43223f0a9bcf50ab08",
+      "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDJqtXwmM+RuCtY\nPBPVmbaRzEm2TEv1QsQgL58OIZMfViZxx28K2KcGgMWNoSiiAzztENKZjoSgDFO+\nuU0j7H+2d0VqBJACxPD0AllpbfA42r7MTn4yFVKk8xXPTmbltcg0Ou963MxXbE0m\nrb1LHMOUdqXVDwduYIFM7lDKc1g7R7dvPWQ4WNlwS5AP3OlAfMeFM07//PlRHQEG\nHCXwqQc+J3xbVm2z/E/ghbvWmCSes4MhRkjpqL1NyLSAi0/f14vZVOwANyPsSxyB\nd9C7g5nsQiWteuDcm5XHN11C65BrdA4Hc4sMLj3P+73VJrrnZO/X+q704AtrgozA\noNHsqrsNAgMBAAECggEAH5CNdV/Zp095+1DF8vog9Q+SXwXwoqYNYBNMFDBloHNB\nx6/FPd+cvvwTT8BwhXE3zUxDhlTkBdAAIJtMy2lmMPdYpkgqCUDtjOe8OnACeEem\nswA7KNglDBvfJ0g4e05ZVHGAD800758MMVhixzmslBWBDcjRKzHQMywe+Z0Vq4te\nMadAJ4pRPCjNBEDvixEQHOIzzjpcdKDFOpcaanqubd+oTXBzhV+JcAHrxL+5jujg\nv/z7etWQ80RkRbMj16dm8Qyhcx3vHrI/icTwgGIC4pNJ0swkwJlcs8FCs2x/WmOG\ngcinGRpWoNSgYMMUwAC8hlxSlXYMYY2ZrW/qKNhAoQKBgQDoX7oSO5qjFuJV6+WH\nIQFbe+S2yNyEhAy9GnlfXNsA/sVTTONqQwheHoP/+gn1rDgrsEBeBk0BMMBgWyHI\nw6C23fzlhFFPDNR3nQAAcRid2s5atqe8W1aSCOZsPSUlMI4658GFcK9HUGQBnuPt\nR+bhwZl/p3Rh/YBbjc+wZApFIQKBgQDeK98XS1OFiAXp4m5en2uR7AmQ1gwReTWh\nDmYGS81aVOs/5UumwzPgMx0/fEKOima8XRh5QifGJnH2nlRumgI+59nQGNjt4e5k\np0Md8RjwXH4vAEjBmGhqG1fmN8onzL97NLrdo5iTQPOAjj84vDlkYREE1NnrHQMN\nvYL+yZXMbQKBgQCiHp83t0PkwsN4BJNnWlyTEfX4nFxVS7eDe2PwZ10X7aeHvV3w\nNgIxgALB5RVrxBKQUHAn6SdyTCv7TbldUzbePjQBgPYlO6NELFHi/QSapRxQ55xQ\n6jyUuAbivyoaLy0b5bL7QSnYjDqpcsw8MGzhVmucRx0IfI8/0Ml0m+caYQKBgG7g\nkDbs5eL3TpQ56AEbKLErjl6VJHK3/jbBm9M6k2KojLtXsNiqBMK4X7lmR0Uh90G8\naFFj3bu7RhbhT5vfCo3gYcjEDccygSoEe69+uoaCcor8ZlMPv9RsjwKbBy2ztkBD\nwZqJYcTjnmKjGxQyg6X/92Fk5Ni8ouCBmtWTP0pFAoGBAK5gb2LRcqi3lm5IJt14\nndF/VHP0XFUOF9Oy9nKLKMmhJnp+i2nyvXWo9G+MKkcQfmHeh9tjM+CjCoxPWosb\nkRNFhuRZ8NlQCHzhDP5fFdETaNS+HHED8yeiufNkAhaVpKTRWbwNUqIVJV02karl\nt8N+Qcljgk/b/FdMckGeAg2D\n-----END PRIVATE KEY-----\n",
+      "client_email": "firebase-adminsdk-ni92i@doc-utt.iam.gserviceaccount.com",
+      "client_id": "111620762294018288671",
+      "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+      "token_uri": "https://accounts.google.com/o/oauth2/token",
+      "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+      "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-ni92i%40doc-utt.iam.gserviceaccount.com"
+    },
+    "databaseURL": "https://doc-utt.firebaseio.com/"
+  },
   "database": {
     "host": "docutt-backend.cofdbdo0hekd.eu-west-1.rds.amazonaws.com",
-    "database":"docutt",
+    "database": "docutt",
     "username": "docutt",
     "password": "docutt-backend",
     "dialect": "mysql",
-    "logging": false,
+    "logging": true,
     "pool": {
       "maxConnections": 5,
       "maxIdleTime": 30

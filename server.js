@@ -1,6 +1,9 @@
-const app = require('./app')
 const config = require('config')
 const models = require('./db/models')
+
+const {initialize} = require('./utils/authentication')
+
+const app = require('./app')
 
 const port = normalizePort(process.env.PORT || config.port)
 
