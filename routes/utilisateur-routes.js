@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const {isAuthenticated, login} = require('../utils/authentication')
+const {isAuthenticated} = require('../utils/authentication')
 
 const {createUtilisateur} = require('../services/utilisateur-services')
 
