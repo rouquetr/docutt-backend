@@ -1,5 +1,12 @@
 'use strict'
 
+/*
+ * Roles:
+ * Doctorant = 1
+ * Admin = 2
+ * Enseignant-chercheur = 3
+ */
+
 module.exports = (sequelize, DataTypes) => {
     var Utilisateur = sequelize.define('Utilisateur', {
         nom: { type: DataTypes.STRING, allowNull: false },
