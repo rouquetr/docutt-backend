@@ -1,4 +1,4 @@
-const Ue = require('../db/models').Ue
+const {Ue, Utilisateur} = require('../db/models')
 
 function createUe(utilisateur, ueToCreate) {
     if (utilisateur.role == 1) return Promise.reject({code: 401, result: "Vous n'avez pas le droit d'effectuer cette action"})
@@ -13,6 +13,17 @@ function createUe(utilisateur, ueToCreate) {
         )
 }
 
+function getUeFromUser(utilisateur) {
+    return Ue.findAll({include: [{model: Utilisateur, where: {id: utilisateur.id}, required: true}]})
+        .then(ues => ues.map(ue => ({id: ue.id, nom: ue.nom})))
+}
+
+function getAllUe() {
+    return Ue.findAll()
+}
+
 module.exports = {
-    createUe
+    createUe,
+    getUeFromUser,
+    getAllUe
 }
