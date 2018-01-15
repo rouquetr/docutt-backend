@@ -18,18 +18,19 @@ function createCreneau(utilisateur, creneauToCreate) {
         })
 }
 
-function candidateToCreneau(utilisateur, creneauId) {
+function candidateToCreneau(utilisateur, creneauIds) {
     if (utilisateur.role != 1) return Promise.reject({code: 401, result: "Vous n'avez pas le droit d'effectuer cette action"})
 
-    return Creneau.findById(creneauId)
+    return Promise.all(creneauIds.map(creneauId =>Creneau.findById(creneauId)
         .then(creneau => {
-            if (creneau == null) return Promise.reject({code: 422, result: 'Impossible de postuler pour un créneau inexistant'})
+            if (creneau == null) return Promise.resolve({id: creneauIdg, result: 'Impossible de postuler pour un créneau inexistant'})
             return Candidature.findOne({where: {id_creneau: creneauId, id_doctorant: utilisateur.id}})
                 .then(result => {
                     if (result == null) return Candidature.create({id_doctorant: utilisateur.id, id_creneau: creneauId})
-                    return Promise.reject({code: 422, result: "Impossible de postuler plusieurs fois au même creneau"})
+                    return Promise.resolve({id: creneauId, result: "Impossible de postuler plusieurs fois au même creneau"})
                 })
         })
+    ))
 }
 
 module.exports = {
