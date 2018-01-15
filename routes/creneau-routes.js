@@ -12,7 +12,7 @@ router.post('/', isAuthenticated, (req, res, next) =>
         })
 )
 
-router.post('/candidate/:creneauId', isAuthenticated, (req, res, next) =>
+router.post('/:creneauId/candidate', isAuthenticated, (req, res, next) =>
     candidateToCreneau(req.user, req.params.creneauId).then(result => res.json(result))
         .catch(err => {
             if(err.code) res.status(err.code).json(err)
