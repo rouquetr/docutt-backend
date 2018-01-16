@@ -41,6 +41,15 @@ function getCreneauFromFiltre(filtre) {
             const jourCreneau = moment(creneau.date).format("dddd")
             return !(filtre.horairesNonVoulus[jourCreneau] && filtre.horairesNonVoulus[jourCreneau].includes(creneau.heure_debut))
         }))
+        .then(creneaux => creneaux.map(creneau => {
+            return {
+                id: creneau.id,
+                date: creneau.date,
+                heure_debut: creneau.heure_debut,
+                duree: creneau.duree,
+                ue: creneau.Ue.nom
+            }
+        }))
 }
 
 module.exports = {

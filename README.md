@@ -31,6 +31,11 @@ example of response: `[{"id": 1,"nom": "LO02"},{"id": 2,"nom": "IF26"}]`
 `/ue/my` to get the ue from the referent logged
 example of response: `[{"id": 1,"nom": "LO02"},{"id": 2,"nom": "IF26"}]`
 
+`/candidature/my` to get the ue from the doctorant logged
+example of response: `[{"id": 10,"status": 0,"creneau": {"date": "2018-09-18T04:05:04.000Z", "heure_debut": 8, "duree": 2,
+"ue": "LO02"}},{"id": 11,"status": 0,"creneau": {"date": "2018-11-07T01:40:32.000Z","heure_debut": 10,"duree": 2,
+"ue": "LO02"}}]`
+
 #### POST
 
 `/utilisateurs` to create a new user
@@ -45,6 +50,8 @@ example of body: `{"creneaux": [1,2,3,4]}` , the array is an array of creneau id
 `/creneau/filtre` to get all the creneau corresponding to a filter
 example of body: `{"ue": ["LO02", "nF16"],"horairesNonVoulus": {"lundi": [],"mardi": [8],"mercredi": [10, 12],
 "jeudi": [],"vendredi": [],"samedi": []}}`
+example of response: `[{"id": 4,"date": "2018-09-22T12:11:09.000Z","heure_debut": 14,"duree": 2,"ue": "LO02"},
+{"id": 5,"date": "2018-05-12T03:34:56.000Z","heure_debut": 16,"duree": 2,"ue": "LO02"}]`
 
 `/ue` to create a new ue or add the logged user as a referent to an ue
 example of body: `{"nom": "lO12"}`
