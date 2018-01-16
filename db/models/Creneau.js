@@ -3,7 +3,7 @@
 module.exports = (sequelize, DataTypes) => {
     var Creneau = sequelize.define('Creneau', {
         date: { type: DataTypes.DATE, allowNull: false },
-        heure_debut: { type: DataTypes.STRING, allowNull: false },
+        heure_debut: { type: DataTypes.INTEGER, allowNull: false },
         duree: { type: DataTypes.INTEGER, allowNull: false }
     }, {
         timestamps: false,

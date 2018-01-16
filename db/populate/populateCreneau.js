@@ -3,7 +3,7 @@ const faker = require('faker')
 
 function populateCreneau() {
     const fakeCreneaux = []
-    for (i = 0; i < 3; i++) {
+    for (i = 0; i < 6; i++) {
         fakeCreneaux[i] = {
             date: faker.date.future(),
             heure_debut: 8 + 2 * i,
@@ -12,8 +12,8 @@ function populateCreneau() {
         }
     }
 
-    for (i = 0; i < 3; i++) {
-        fakeCreneaux[i + 3] = {
+    for (i = 0; i < 6; i++) {
+        fakeCreneaux[i + 6] = {
             date: faker.date.future(),
             heure_debut: 8 + 2 * i,
             duree: 2,
@@ -21,8 +21,8 @@ function populateCreneau() {
         }
     }
 
-    for (i = 0; i < 3; i++) {
-        fakeCreneaux[i + 6] = {
+    for (i = 0; i < 6; i++) {
+        fakeCreneaux[i + 12] = {
             date: faker.date.future(),
             heure_debut: 8 + 2 * i,
             duree: 2,

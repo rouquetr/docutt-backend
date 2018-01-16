@@ -1,4 +1,5 @@
 const {Candidature, Creneau, Ue} = require('../db/models')
+const moment = require('moment')
 
 function createCreneau(utilisateur, creneauToCreate) {
 
@@ -33,7 +34,17 @@ function candidateToCreneau(utilisateur, creneauIds) {
     ))
 }
 
+function getCreneauFromFiltre(filtre) {
+    moment.locale('fr')
+    return Creneau.findAll({include: [{model: Ue, where: {nom: {$or: filtre.ue}}, required: true}]})
+        .then(creneaux => creneaux.filter(creneau => {
+            const jourCreneau = moment(creneau.date).format("dddd")
+            return !(filtre.horairesNonVoulus[jourCreneau] && filtre.horairesNonVoulus[jourCreneau].includes(creneau.heure_debut))
+        }))
+}
+
 module.exports = {
     createCreneau,
-    candidateToCreneau
+    candidateToCreneau,
+    getCreneauFromFiltre
 }

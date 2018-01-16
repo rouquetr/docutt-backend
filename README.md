@@ -42,6 +42,10 @@ example of body: `{"date": "2018-10-27 11:02:06", "heure_debut": "10h", "duree":
 `/creneau/candidate` to candidate to several creneau
 example of body: `{"creneaux": [1,2,3,4]}` , the array is an array of creneau ids
 
+`/creneau/filtre` to get all the creneau corresponding to a filter
+example of body: `{"ue": ["LO02", "nF16"],"horairesNonVoulus": {"lundi": [],"mardi": [8],"mercredi": [10, 12],
+"jeudi": [],"vendredi": [],"samedi": []}}`
+
 `/ue` to create a new ue or add the logged user as a referent to an ue
 example of body: `{"nom": "lO12"}`
 
