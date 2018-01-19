@@ -20,12 +20,12 @@ router.post('/candidate', isAuthenticated, (req, res, next) =>
         })
 )
 
-router.post('/filtre',/* isAuthenticated,*/ (req, res, next) =>
+router.post('/filtre', isAuthenticated, (req, res, next) =>
     getCreneauFromFiltre(req.body).then(result => res.json(result))
-       /* .catch(err => {
+        .catch(err => {
             if(err.code) res.status(err.code).json(err)
             res.status(422).json(err)
-        })*/
+        })
 )
 
 module.exports = router
