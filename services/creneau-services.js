@@ -9,7 +9,7 @@ function createCreneau(utilisateur, creneauToCreate) {
         .then(ue => {
             if (ue == null) return Promise.reject({code: 422, result:'Impossible de creer un créneau pour une UE inexistante'})
             const creneau = {
-                date: moment(creneauToCreate.date).calendar(),
+                date: creneauToCreate.date,
                 heure_debut: creneauToCreate.heure_debut,
                 duree: creneauToCreate.duree,
                 id_ue: ue.id
@@ -37,12 +37,18 @@ function candidateToCreneau(utilisateur, creneauIds) {
 function getCreneauFromFiltre(filtre, utilisateur) {
     moment.locale('fr')
     return Creneau.findAll({
-        order:['date', 'heure_debut', 'ASC'],
         include: [
             {model: Ue, where: {nom: {$or: filtre.ue}}, required: true, order: ['nom']},
-            {model: Candidature, where: {id_doctorant: {$not: utilisateur.id}}, required: true}
-            ]
+            {model: Candidature, where: {id_doctorant: utilisateur.id}, required: true}
+        ]
     })
+        .then(creneaux => Creneau.findAll({
+            where: {id: {$not:creneaux.map(creneau => creneau.id)} },
+            order:['date', 'heure_debut'],
+            include: [
+                {model: Ue, where: {nom: {$or: filtre.ue}}, required: true, order: ['nom']},
+            ]
+        }))
         .then(creneaux => creneaux.filter(creneau => {
             const jourCreneau = moment(creneau.date).format("dddd")
             return !(filtre.horairesNonVoulus[jourCreneau] && filtre.horairesNonVoulus[jourCreneau].includes(creneau.heure_debut))
@@ -50,7 +56,7 @@ function getCreneauFromFiltre(filtre, utilisateur) {
         .then(creneaux => creneaux.map(creneau => {
             return {
                 id: creneau.id,
-                date: creneau.date,
+                date: moment(creneau.date).calendar(),
                 heure_debut: creneau.heure_debut,
                 duree: creneau.duree,
                 ue: creneau.Ue.nom
