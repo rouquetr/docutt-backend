@@ -4,12 +4,12 @@ const moment = require('moment')
 function createCreneau(utilisateur, creneauToCreate) {
 
     if (utilisateur.role == 1) return Promise.reject({code: 401, result: "Vous n'avez pas le droit d'effectuer cette action"})
-
+    moment.locale('fr')
     return Ue.findOne({where: {nom: creneauToCreate.nom_ue}})
         .then(ue => {
             if (ue == null) return Promise.reject({code: 422, result:'Impossible de creer un créneau pour une UE inexistante'})
             const creneau = {
-                date: creneauToCreate.date,
+                date: moment(creneauToCreate.date).calendar(),
                 heure_debut: creneauToCreate.heure_debut,
                 duree: creneauToCreate.duree,
                 id_ue: ue.id
