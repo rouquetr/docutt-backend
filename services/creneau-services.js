@@ -34,9 +34,15 @@ function candidateToCreneau(utilisateur, creneauIds) {
     ))
 }
 
-function getCreneauFromFiltre(filtre) {
+function getCreneauFromFiltre(filtre, utilisateur) {
     moment.locale('fr')
-    return Creneau.findAll({include: [{model: Ue, where: {nom: {$or: filtre.ue}}, required: true}]})
+    return Creneau.findAll({
+        order:['date', 'heure_debut', 'ASC'],
+        include: [
+            {model: Ue, where: {nom: {$or: filtre.ue}}, required: true, order: ['nom']},
+            {model: Candidature, where: {id_doctorant: {$not: utilisateur.id}}, required: true}
+            ]
+    })
         .then(creneaux => creneaux.filter(creneau => {
             const jourCreneau = moment(creneau.date).format("dddd")
             return !(filtre.horairesNonVoulus[jourCreneau] && filtre.horairesNonVoulus[jourCreneau].includes(creneau.heure_debut))
