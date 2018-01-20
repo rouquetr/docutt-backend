@@ -25,7 +25,7 @@ Every request except the one to create an user and the one to check the server n
 
 `/` to check if the server is ready
 
-`/ue` to get all existing ue
+`/ue` to get all eSxisting ue
 
 example of response: `[{"id": 1,"nom": "LO02"},{"id": 2,"nom": "IF26"}]`
 
@@ -51,7 +51,7 @@ example of body: `{"nom": "Rouquet", "prenom": "Raphael", "email": "raphael.rouq
 
 `/creneau` to create a new creneau
 
-example of body: `{"date": "2018-10-27 11:02:06", "heure_debut": "10h", "duree": "2", "nom_ue": "LO12"}`
+example of body: `{"date": "2018-10-27 11:02:06", "heure_debut": "10", "duree": "2", "nom_ue": "LO12"}`
 
 `/creneau/candidate` to candidate to several creneau
 
