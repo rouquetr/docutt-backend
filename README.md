@@ -33,7 +33,11 @@ example of response: `[{"id": 1,"nom": "LO02"},{"id": 2,"nom": "IF26"}]`
 
 example of response: `[{"id": 1,"nom": "LO02"},{"id": 2,"nom": "IF26"}]`
 
-`/candidature/my` to get the ue from the doctorant logged
+`/candidature/my/todo` to get the candidatures from the doctorant logged to do
+
+`/candidature/my/validate` to get the candidatures from the doctorant logged validated by a professor
+
+`/candidature/my/done` to get the candidatures from the doctorant logged already done
 
 example of response: `[{"id": 10,"status": 0,"creneau": {"date": "2018-09-18T04:05:04.000Z", "heure_debut": 8, "duree": 2,
 "ue": "LO02"}},{"id": 11,"status": 0,"creneau": {"date": "2018-11-07T01:40:32.000Z","heure_debut": 10,"duree": 2,

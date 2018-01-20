@@ -7,8 +7,9 @@ function updateCandidature(candidatureIds, newStatus) {
     ))
 }
 
-function getCandidatureByUser(utilisateur) {
+function getCandidatureByUserAndStatus(utilisateur, status) {
     return Candidature.findAll({
+        where: {status: status},
         include: [
             {model: Utilisateur, where: {id: utilisateur.id}, required: true},
             {model: Creneau, include: [{model: Ue}]}
@@ -29,5 +30,5 @@ function getCandidatureByUser(utilisateur) {
 
 module.exports = {
     updateCandidature,
-    getCandidatureByUser
+    getCandidatureByUserAndStatus
 }

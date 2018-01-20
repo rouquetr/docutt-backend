@@ -2,10 +2,26 @@ const express = require('express')
 const router = express.Router()
 const {isAuthenticated} = require('../utils/authentication')
 
-const {updateCandidature, getCandidatureByUser} = require('../services/candidature-service')
+const {updateCandidature, getCandidatureByUserAndStatus} = require('../services/candidature-service')
 
-router.get('/my', isAuthenticated, (req, res, next) =>
-    getCandidatureByUser(req.user).then(result => res.json(result))
+router.get('/my/todo', isAuthenticated, (req, res, next) =>
+    getCandidatureByUserAndStatus(req.user, 0).then(result => res.json(result))
+        .catch(err => {
+            if(err.code) res.status(err.code).json(err)
+            res.status(422).json(err)
+        })
+)
+
+router.get('/my/validate', isAuthenticated, (req, res, next) =>
+    getCandidatureByUserAndStatus(req.user, 1).then(result => res.json(result))
+        .catch(err => {
+            if(err.code) res.status(err.code).json(err)
+            res.status(422).json(err)
+        })
+)
+
+router.get('/my/done', isAuthenticated, (req, res, next) =>
+    getCandidatureByUserAndStatus(req.user, 2).then(result => res.json(result))
         .catch(err => {
             if(err.code) res.status(err.code).json(err)
             res.status(422).json(err)
