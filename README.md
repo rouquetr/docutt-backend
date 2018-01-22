@@ -82,6 +82,7 @@ example of body: `{"nom": "lO12"}`
 `/candidature/todo`
 `/candidature/validate`
 `/candidature/done`
+`/candidature/refuse`
 to change the status of a candidature
 
 example of body: `{"candidatures": [1,2,3,4]}`, the array is an array of candidature ids

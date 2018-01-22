@@ -60,4 +60,12 @@ router.patch('/done', isAuthenticated, (req, res, next) =>
         })
 )
 
+router.patch('/refuse', isAuthenticated, (req, res, next) =>
+    updateCandidature(req.body.candidatures, 3).then(result => res.json(result))
+        .catch(err => {
+            if(err.code) res.status(err.code).json(err)
+            res.status(422).json(err)
+        })
+)
+
 module.exports = router
