@@ -1,5 +1,13 @@
 'use strict'
 
+/*
+ * statut:
+ * 0: a valider
+ * 1: validé
+ * 2: faite
+ * 3: refusé
+ */
+
 module.exports = (sequelize, DataTypes) => {
     var Candidature = sequelize.define('Candidature', {
         status: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 }
