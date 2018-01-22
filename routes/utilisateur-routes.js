@@ -16,10 +16,10 @@ router.get('/', isAuthenticated, (req, res, next) => res.status(400).json(req.us
 
 router.get('/info', isAuthenticated, (req, res, next) =>
     getInfo(req.user).then(result => res.json(result))
-        .catch(err => {
+        /*.catch(err => {
             if(err.code) res.status(err.code).json(err)
             res.status(422).json(err)
-        })
+        })*/
 )
 
 module.exports = router

@@ -1,4 +1,5 @@
 const {Utilisateur, Candidature, Creneau, Ue} = require('../db/models')
+const moment = require('moment')
 
 function createUtilisateur(utilisateurToCreate) {
     return Utilisateur.create(utilisateurToCreate)
@@ -10,7 +11,7 @@ function getInfo(utilisateur) {
             where: {status: 1},
             include: [
                 {model: Utilisateur, where: {id: utilisateur.id}, required: true},
-                {model: Creneau, order: ['date'], required: true, include: {model: Ue, required: true}}
+                {model: Creneau, where: {date: {$gte: moment().toDate()}},  order: ['date'], required: true, include: {model: Ue, required: true}}
             ],
             limit: 5
         })
@@ -27,7 +28,7 @@ function getInfo(utilisateur) {
                             dureeEffectuee += candidatureFaite.Creneau.duree
                         })
                         const creneauxAfaire = candidaturesAFaire.map(candidaturesAFaire => ({
-                            date: candidaturesAFaire.Creneau.date,
+                            date: moment(candidaturesAFaire.Creneau.date).format('DD/MM/YYYY'),
                             heure_debut: candidaturesAFaire.Creneau.heure_debut,
                             duree: candidaturesAFaire.Creneau.duree,
                             ue: candidaturesAFaire.Creneau.Ue.nom
@@ -35,7 +36,7 @@ function getInfo(utilisateur) {
                         return {creneauxAfaire, dureeEffectuee}
                     })
             )
-    } else return promise.resolve("")
+    } else return Promise.resolve("")
 }
 
 module.exports = {
