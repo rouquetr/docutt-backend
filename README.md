@@ -43,6 +43,10 @@ example of response: `[{"id": 10,"status": 0,"creneau": {"date": "2018-09-18T04:
 "ue": "LO02"}},{"id": 11,"status": 0,"creneau": {"date": "2018-11-07T01:40:32.000Z","heure_debut": 10,"duree": 2,
 "ue": "LO02"}}]`
 
+`/creneau/:nomUe` to get the creneau by ue
+
+example of response: `[{"id": 1,"date": "2018-09-22T12:11:09.000Z", "heure_debut": 10, "duree": 2, "ue": "LO02"},{"id": 2,"date": "2018-09-22T12:11:09.000Z", "heure_debut": 10, "duree": 2, "duree": 2, "ue": "LO02"}]`
+
 #### POST
 
 `/utilisateurs` to create a new user
