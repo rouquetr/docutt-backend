@@ -19,6 +19,10 @@ function createCreneau(utilisateur, creneauToCreate) {
         })
 }
 
+function deleteCreneau(creneauId) {
+    return Creneau.findById(creneauId).then(creneau => creneau.destroy({force: true}))
+}
+
 function candidateToCreneau(utilisateur, creneauIds) {
     if (utilisateur.role != 1) return Promise.reject({code: 401, result: "Vous n'avez pas le droit d'effectuer cette action"})
 
@@ -73,7 +77,6 @@ function getCreneauFromUe(ue) {
         }]
     })
         .then(creneaux => creneaux.map(creneau => {
-            console.log(creneau)
             return {
                 id: creneau.id,
                 date: moment(creneau.date).calendar(),
@@ -87,6 +90,7 @@ function getCreneauFromUe(ue) {
 module.exports = {
     createCreneau,
     candidateToCreneau,
+    deleteCreneau,
     getCreneauFromFiltre,
     getCreneauFromUe
 }

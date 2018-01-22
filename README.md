@@ -73,6 +73,10 @@ example of response: `[{"id": 4,"date": "2018-09-22T12:11:09.000Z","heure_debut"
 
 example of body: `{"nom": "lO12"}`
 
+#### DELETE
+
+`/creneau/:id` to delete a creneau
+
 #### PATCH
 
 `/candidature/todo`
