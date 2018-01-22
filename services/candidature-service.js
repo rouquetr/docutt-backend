@@ -30,7 +30,30 @@ function getCandidatureByUserAndStatus(utilisateur, status) {
     }))
 }
 
+function getCandidatureToValidateByUe(ue) {
+    return Candidature.findAll({
+        where: {status: 0},
+        include: [
+            {model: Utilisateur, required: true},
+            {model: Creneau, include: [{model: Ue, where: {nom: ue}, order: ['nom']}], order: ['date, heure_debut']}
+        ]
+    }).then(candidatures => candidatures.map(candidature => {
+        return {
+            id: candidature.id,
+            status: candidature.status,
+            creneau: {
+                date: moment(candidature.Creneau.date).calendar(),
+                heure_debut: candidature.Creneau.heure_debut,
+                duree: candidature.Creneau.duree,
+                ue: candidature.Creneau.Ue.nom
+            },
+            utilisateur: { nom: utilisateur.nom, prenom: utilisateur.prenom }
+        }
+    }))
+}
+
 module.exports = {
     updateCandidature,
-    getCandidatureByUserAndStatus
+    getCandidatureByUserAndStatus,
+    getCandidatureToValidateByUe
 }
