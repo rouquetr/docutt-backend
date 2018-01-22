@@ -35,7 +35,7 @@ function getCandidatureToValidateByUe(ue) {
         where: {status: 0},
         include: [
             {model: Utilisateur, required: true},
-            {model: Creneau, include: [{model: Ue, where: {nom: ue}, order: ['nom']}], order: ['date, heure_debut']}
+            {model: Creneau, include: [{model: Ue, where: {nom: ue}, order: ['nom']}], order: ['date, heure_debut'], required: true}
         ]
     }).then(candidatures => candidatures.map(candidature => {
         return {
@@ -47,7 +47,7 @@ function getCandidatureToValidateByUe(ue) {
                 duree: candidature.Creneau.duree,
                 ue: candidature.Creneau.Ue.nom
             },
-            utilisateur: { nom: utilisateur.nom, prenom: utilisateur.prenom }
+            utilisateur: { nom: candidature.Utilisateur.nom, prenom: candidature.Utilisateur.prenom }
         }
     }))
 }
