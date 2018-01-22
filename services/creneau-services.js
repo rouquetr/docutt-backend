@@ -60,7 +60,7 @@ function getCreneauFromFiltre(filtre, utilisateur) {
         .then(creneaux => creneaux.map(creneau => {
             return {
                 id: creneau.id,
-                date: moment(creneau.date).calendar(),
+                date: moment(creneau.date).format('DD/MM/YYYY'),
                 heure_debut: creneau.heure_debut,
                 duree: creneau.duree,
                 ue: creneau.Ue.nom
@@ -79,7 +79,7 @@ function getCreneauFromUe(ue) {
         .then(creneaux => creneaux.map(creneau => {
             return {
                 id: creneau.id,
-                date: moment(creneau.date).calendar(),
+                date: moment(creneau.date).format('DD/MM/YYYY'),
                 heure_debut: creneau.heure_debut,
                 duree: creneau.duree,
                 ue: creneau.Ue.nom

@@ -21,7 +21,7 @@ function getCandidatureByUserAndStatus(utilisateur, status) {
             id: candidature.id,
             status: candidature.status,
             creneau: {
-                date: moment(candidature.Creneau.date).calendar(),
+                date: moment(candidature.Creneau.date).format('DD/MM/YYYY'),
                 heure_debut: candidature.Creneau.heure_debut,
                 duree: candidature.Creneau.duree,
                 ue: candidature.Creneau.Ue.nom
@@ -42,7 +42,7 @@ function getCandidatureToValidateByUe(ue) {
             id: candidature.id,
             status: candidature.status,
             creneau: {
-                date: moment(candidature.Creneau.date).calendar(),
+                date: moment(candidature.Creneau.date).format('DD/MM/YYYY'),
                 heure_debut: candidature.Creneau.heure_debut,
                 duree: candidature.Creneau.duree,
                 ue: candidature.Creneau.Ue.nom
