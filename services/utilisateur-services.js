@@ -36,6 +36,17 @@ function getInfo(utilisateur) {
                         return {creneauxAfaire, dureeEffectuee}
                     })
             )
+    } else if (utilisateur.role == 3) {
+        return Candidature.findAll({
+            where: {status: 0},
+            include: {
+                model: Creneau,
+                include: {model: Ue, required: true, include: {model: Utilisateur, where: {id: utilisateur.id}}},
+                required: true
+            }
+        }).then(candidatures => ({
+            candidaturesATraiter: candidatures.length
+        }))
     } else return Promise.resolve("")
 }
 
